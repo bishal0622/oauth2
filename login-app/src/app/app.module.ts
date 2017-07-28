@@ -2,27 +2,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule }   from '@angular/router';
-
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home.component';
 import { FooComponent } from './foo.component';
+import {MdButtonModule, MdCardModule, MdIconModule, MdMenuModule, MdToolbarModule} from "@angular/material";
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {appRoutingModule} from "./app.routing";
+import {UserComponent} from "./user-signup/user.component";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    FooComponent    
+    FooComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([
-     { path: '', component: HomeComponent },
-    { path: 'login', component: LoginComponent }])
+    MdToolbarModule,
+    MdMenuModule,
+    MdCardModule,
+    MdIconModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MdButtonModule,
+    appRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

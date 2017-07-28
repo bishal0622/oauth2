@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Anton|Lato');
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative:900');
+
+
+.title-logo{
+  font-family: 'Cinzel Decorative', cursive;
+}
+
+.heading{
+  font-family: 'Anton', sans-serif;
+}
+
+body{
+  font-family: 'Lato', sans-serif;
+}

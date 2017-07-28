@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-offset-3 col-md-6" style="margin-top: 10%">
+    <md-card class="example-card">
+      <md-card-header style="justify-content: center;" class="heading">
+        <md-card-title><h2>Signup</h2></md-card-title>
+      </md-card-header>
+      <md-card-content class="row">
+        <div class="col-sm-10 col-sm-offset-1 form-group">
+          <label>Username</label>
+          <input class="form-control" type="text" [(ngModel)]="user.username"/>
+        </div>
+        <div class="col-sm-10 col-sm-offset-1 form-group">
+          <label>Password</label>
+          <input class="form-control" type="password" [(ngModel)]="user.password"/>
+        </div>
+      </md-card-content>
+      <md-card-actions class="text-center">
+        <button md-button (click)="signup()" type="submit">SignUp</button>
+        <button md-button [routerLink]="['/login']">Login</button>
+      </md-card-actions>
+    </md-card>
+  </div>
+</div>
+
+
+
+
+
