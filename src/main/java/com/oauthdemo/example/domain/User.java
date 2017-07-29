@@ -18,15 +18,25 @@ public class User {
     Boolean enabled;
     @ManyToMany(cascade = CascadeType.ALL)
     List<Authority> authorityList;
+    String email;
 
     public User() {
     }
 
-    public User(String username, String password, Boolean enabled, List<Authority> authorityList) {
+    public User(String username, String password, Boolean enabled, List<Authority> authorityList, String email) {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
         this.authorityList = authorityList;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getId() {
@@ -77,6 +87,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", enabled=" + enabled +
                 ", authorityList=" + authorityList +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

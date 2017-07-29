@@ -12,20 +12,22 @@ public class UserDTO {
     String password;
     Boolean enabled;
     List<Authority> authorityList;
+    String email;
 
     public UserDTO() {
     }
 
     public UserDTO(User user) {
-        this(user.getId(),user.getUsername(),user.getPassword(),user.getEnabled(),user.getAuthorityList());
+        this(user.getId(),user.getUsername(),user.getPassword(),user.getEnabled(),user.getAuthorityList(),user.getEmail());
     }
 
-    public UserDTO(Integer id, String username, String password, Boolean enabled, List<Authority> authorityList) {
+    public UserDTO(Integer id, String username, String password, Boolean enabled, List<Authority> authorityList,String email) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.enabled = enabled;
         this.authorityList = authorityList;
+        this.email = email;
     }
 
     public Integer getId() {
@@ -48,6 +50,10 @@ public class UserDTO {
         return authorityList;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -56,6 +62,7 @@ public class UserDTO {
                 ", password='" + password + '\'' +
                 ", enabled=" + enabled +
                 ", authorityList=" + authorityList +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

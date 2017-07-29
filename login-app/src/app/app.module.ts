@@ -11,6 +11,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
 import {appRoutingModule} from "./app.routing";
 import {UserComponent} from "./user-signup/user.component";
 import {RouterModule} from "@angular/router";
+import {UserService} from "./user-signup/user.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {RouterModule} from "@angular/router";
     MdButtonModule,
     appRoutingModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

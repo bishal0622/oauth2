@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Id;
 import java.util.List;
 
 /**
@@ -56,6 +57,12 @@ public class UserController {
     @GetMapping("/user/{name}")
     public ResponseEntity<?> displayByName(@PathVariable String name){
         User user = userService.findByName(name);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<?> displayById(@PathVariable Integer id){
+        User user = userService.getUser(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

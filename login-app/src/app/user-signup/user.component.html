@@ -13,6 +13,10 @@
           <label>Password</label>
           <input class="form-control" type="password" [(ngModel)]="user.password"/>
         </div>
+        <div class="col-sm-10 col-sm-offset-1 form-group">
+          <label>Email</label>
+          <input class="form-control" type="email" [(ngModel)]="user.email"/>
+        </div>
       </md-card-content>
       <md-card-actions class="text-center">
         <button md-button (click)="signup()" type="submit">SignUp</button>
