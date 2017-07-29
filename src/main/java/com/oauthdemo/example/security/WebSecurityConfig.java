@@ -51,7 +51,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/oauth/token").permitAll()
                 .antMatchers(HttpMethod.POST,"/oauth/token").permitAll()
-                .antMatchers("/user/").permitAll();
+                .antMatchers(HttpMethod.POST,"/user/").permitAll()
+                .antMatchers(HttpMethod.GET, "/user/").access("hasRole('ADMIN')")
+                .antMatchers(HttpMethod.DELETE, "/user/").access("hasRole('ADMIN')")
+                .antMatchers(HttpMethod.PUT, "/user/").access("hasRole('ADMIN')");
     }
 
 

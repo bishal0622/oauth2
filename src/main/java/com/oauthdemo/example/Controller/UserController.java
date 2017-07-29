@@ -1,6 +1,7 @@
 package com.oauthdemo.example.Controller;
 
 import com.oauthdemo.example.domain.User;
+import com.oauthdemo.example.dto.UserDTO;
 import com.oauthdemo.example.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,20 +30,26 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public ResponseEntity<?> insert(@RequestBody User user){
-        userService.insert(user);
+    public ResponseEntity<?> insert(@RequestBody UserDTO userDTO){
+        userService.insert(userDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/user/{id}")
-    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody User user){
-        userService.update(id,user);
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody UserDTO userDTO){
+        userService.update(id,userDTO);
         return new ResponseEntity<Object>(HttpStatus.OK);
     }
 
     @DeleteMapping("/user/{id}")
     public ResponseEntity<?> delete(@PathVariable Integer id){
         userService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/user/activate/{id}")
+    public ResponseEntity<?> activate(@PathVariable Integer id){
+        userService.activate(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
