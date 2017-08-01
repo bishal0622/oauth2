@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
+import {Http, Headers,RequestOptions} from "@angular/http";
 import {User} from "./user.model";
 import 'rxjs/add/operator/map';
 
@@ -13,7 +13,8 @@ export class UserService{
   }
 
   create(user: User) {
-    return this.http.post(this.resourceUrl, user).map((res) => res.json());
+    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+    return this.http.post(this.resourceUrl,user,headers).map((res) => res.json());
   }
 
   query() {
@@ -24,12 +25,16 @@ export class UserService{
     return this.http.get(`${this.resourceUrl}/${id}`).map((res) => res.json());
   }
 
-  update(user: User) {
-    return this.http.put(this.resourceUrl, user);
+  update(user: User,id : number) {
+    return this.http.put(this.resourceUrl+'/'+id, user);
   }
 
   delete(id: number) {
     return this.http.delete(`${this.resourceUrl}/${id}`);
+  }
+
+  toggle(id: number) {
+    return this.http.put('http://localhost:9000/user/activate/'+id,id).map((res) => res.json());
   }
 
 }

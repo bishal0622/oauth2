@@ -51,10 +51,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/oauth/token").permitAll()
                 .antMatchers(HttpMethod.POST,"/oauth/token").permitAll()
+                .antMatchers(HttpMethod.OPTIONS,"/user").permitAll()
                 .antMatchers(HttpMethod.POST,"/user/").permitAll()
-                .antMatchers(HttpMethod.GET, "/user/").access("hasRole('ADMIN')")
-                .antMatchers(HttpMethod.DELETE, "/user/").access("hasRole('ADMIN')")
-                .antMatchers(HttpMethod.PUT, "/user/").access("hasRole('ADMIN')");
+                .antMatchers(HttpMethod.GET, "/user/").permitAll()
+                .antMatchers(HttpMethod.DELETE, "/user/").permitAll()
+                .antMatchers(HttpMethod.OPTIONS,"/user/activate/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/user/activate/**").permitAll();
     }
 
 

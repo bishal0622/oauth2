@@ -12,6 +12,8 @@ import {appRoutingModule} from "./app.routing";
 import {UserComponent} from "./user-signup/user.component";
 import {RouterModule} from "@angular/router";
 import {UserService} from "./user-signup/user.service";
+import {DisplayUserComponent} from "./user-signup/display-user.component";
+import {EditUserComponent} from "./user-signup/edit-user.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {UserService} from "./user-signup/user.service";
     HomeComponent,
     LoginComponent,
     FooComponent,
-    UserComponent
+    UserComponent,
+    DisplayUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

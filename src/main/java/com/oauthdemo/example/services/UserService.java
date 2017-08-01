@@ -94,9 +94,21 @@ public class UserService {
 
     public void activate(Integer id) {
         User user = userRepository.findOne(id);
-        user.setEnabled(true);
-        logger.info("Activated User :"+ user.toString());
-        userRepository.save(user);
-        mailSender.sendMail(user.getEmail(),"Activation Success","Your Account has been activated please try to login in again.");
+        if(user.getEnabled() == null ) {
+            user.setEnabled(true);
+            mailSender.sendMail(user.getEmail(), "Activation Success", "Your Account has been activated please try to login in again.");
+            logger.info("Activated User :" + user.toString());
+            userRepository.save(user);
+        }else if (user.getEnabled() == false){
+            user.setEnabled(true);
+            mailSender.sendMail(user.getEmail(), "Activation Success", "Your Account has been activated please try to login in again.");
+            logger.info("Activated User :" + user.toString());
+            userRepository.save(user);
+        }else {
+            user.setEnabled(false);
+            mailSender.sendMail(user.getEmail(), "Activation Success", "Your Account has been activated please try to login in again.");
+            logger.info("Deactivated User :" + user.toString());
+            userRepository.save(user);
+        }
     }
 }
