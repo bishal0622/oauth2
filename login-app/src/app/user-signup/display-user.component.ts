@@ -28,8 +28,8 @@ export class DisplayUserComponent implements OnInit{
   }
 
   onSuccess(res){
-    this.users = res.json();
-    console.dir(res.json());
+    this.users = res;
+    console.dir(res);
   }
 
   toggle(id){
