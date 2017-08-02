@@ -31,9 +31,9 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/check").access("hasRole('admin')")
-                .antMatchers(HttpMethod.GET,"/user").access("hasRole('admin')")
-                .antMatchers(HttpMethod.POST,"/user").permitAll()
+                .antMatchers("/check/").access("hasRole('admin')")
+//                .antMatchers("/user").access("hasRole('admin')")
+//                .antMatchers(HttpMethod.POST,"/user").permitAll()
 //                .antMatchers("/user/**").permitAll()
 //                .antMatchers("/user/").permitAll()
 //                .antMatchers(HttpMethod.OPTIONS,"/user").permitAll()
