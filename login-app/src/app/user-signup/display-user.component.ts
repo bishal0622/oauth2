@@ -33,15 +33,19 @@ export class DisplayUserComponent implements OnInit{
   }
 
   toggle(id){
-    this.userService.toggle(id).subscribe((res) => this.getUser(), () => console.log('error'));
+    this.userService.toggle(id).subscribe((res) => this.onToggleSuccess(), () => console.log('error'));
+  }
+
+  onToggleSuccess(){
+    this.getUser();
   }
 
   edit(id){
-    // this.router.navigate([/user/edit]);
+    this.router.navigate(['/user/edit/'+id]);
   }
 
   delete(id){
-    this.userService.delete(id).subscribe((res) => console.log('deleted'), () => console.log('error'));
+    this.userService.delete(id).subscribe((res) => this.getUser(), () => console.log('error'));
   }
 
 }

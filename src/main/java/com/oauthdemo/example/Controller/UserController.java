@@ -24,38 +24,38 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user")
+    @GetMapping("/user/")
     public ResponseEntity<?> display(){
         List<User> userList = userService.getAll();
         return new ResponseEntity<Object>(userList, HttpStatus.OK);
     }
 
-    @PostMapping("/user")
+    @PostMapping("/user/")
     public ResponseEntity<?> insert(@RequestBody UserDTO userDTO){
         userService.insert(userDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/user/{id}/")
     public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody UserDTO userDTO){
         userService.update(id,userDTO);
-        return new ResponseEntity<Object>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/user/{id}/")
     public ResponseEntity<?> delete(@PathVariable Integer id){
         userService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/user/activate/{id}")
+    @PutMapping("/user/activate/{id}/")
     public ResponseEntity<?> activate(@PathVariable Integer id){
         userService.activate(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/{id}/")
     public ResponseEntity<?> displayById(@PathVariable Integer id){
         User user = userService.getUser(id);
         return new ResponseEntity<>(user, HttpStatus.OK);

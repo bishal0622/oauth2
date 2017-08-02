@@ -22,26 +22,25 @@ export class UserService{
   }
 
   query() {
-    // var headers = new Headers({'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'});
-    // var options = new RequestOptions({ headers: headers });
+
     return this.http.get(this.resourceUrl+"/?access_token="+Cookie.get('access_token')).map((res) =>res.json())
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   find(id: number) {
-    return this.http.get(`${this.resourceUrl}/${id}`).map((res) => res.json());
+    return this.http.get(`${this.resourceUrl}/${id}`+"/?access_token="+Cookie.get('access_token')).map((res) => res.json());
   }
 
   update(user: User,id : number) {
-    return this.http.put(this.resourceUrl+'/'+id, user);
+    return this.http.put(this.resourceUrl+'/'+id+"/?access_token="+Cookie.get('access_token'), user);
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.resourceUrl}/${id}`);
+    return this.http.delete(`${this.resourceUrl}/${id}`+"/?access_token="+Cookie.get('access_token'));
   }
 
   toggle(id: number) {
-    return this.http.put('http://localhost:9000/user/activate/'+id,id).map((res) => res.json());
+    return this.http.put('http://localhost:9000/user/activate/'+id+"/?access_token="+Cookie.get('access_token'),id).map((res) => res.json());
   }
 
 }

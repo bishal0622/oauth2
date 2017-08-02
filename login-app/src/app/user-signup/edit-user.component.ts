@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "./user.model";
 import {UserService} from "./user.service";
 
@@ -13,7 +13,8 @@ export class EditUserComponent implements OnInit{
   user: User;
 
   constructor(private route : ActivatedRoute,
-              private userService : UserService){
+              private userService : UserService,
+              private router : Router){
     this.user = new User();
 
   }
@@ -22,7 +23,8 @@ export class EditUserComponent implements OnInit{
     this.route.params.subscribe(params => {
       if (params['id']) {
         let id = params['id'];
-        this.userService.find(id).subscribe((res) => this.onSuccess(res), () => console.log('error'));
+        this.userService.find(id).subscribe((res) => this.onSuccess(res),
+          () => console.log('error'));
       }
     });
   }
@@ -32,7 +34,8 @@ export class EditUserComponent implements OnInit{
   }
 
   edit(){
-    this.userService.update(this.user,this.user.id).subscribe((res) => console.log('success'), () => console.log('error'))
+    this.userService.update(this.user,this.user.id).subscribe((res) => this.router.navigate(['users'])
+      , () => console.log('error'))
   }
 
 
