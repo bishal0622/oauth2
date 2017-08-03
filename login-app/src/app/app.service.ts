@@ -52,11 +52,18 @@ export class AppService {
   checkCredentials(){
     if (!Cookie.check('access_token')){
         this._router.navigate(['/login']);
+        return false;
+    }else{
+      return true;
     }
   }
 
   logout() {
     Cookie.delete('access_token');
     this._router.navigate(['/login']);
+  }
+
+  check() {
+    return this._http.get("http://localhost:9000/status/").map((res) => res.json());
   }
 }

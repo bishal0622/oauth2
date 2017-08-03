@@ -14,6 +14,8 @@ import {RouterModule} from "@angular/router";
 import {UserService} from "./user-signup/user.service";
 import {DisplayUserComponent} from "./user-signup/display-user.component";
 import {EditUserComponent} from "./user-signup/edit-user.component";
+import {AppService} from "./app.service";
+import {NavbarComponent} from "./navbar/navbar.component";
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import {EditUserComponent} from "./user-signup/edit-user.component";
     LoginComponent,
     FooComponent,
     UserComponent,
+    NavbarComponent,
     DisplayUserComponent,
     EditUserComponent
   ],
@@ -39,7 +42,7 @@ import {EditUserComponent} from "./user-signup/edit-user.component";
     MdButtonModule,
     appRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService, AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

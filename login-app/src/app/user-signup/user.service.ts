@@ -18,7 +18,7 @@ export class UserService{
 
   create(user: User) {
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-    return this.http.post(this.resourceUrl,user,headers).map((res) => res.json());
+    return this.http.post(this.resourceUrl+"/",user,headers).map((res) => res.json());
   }
 
   query() {

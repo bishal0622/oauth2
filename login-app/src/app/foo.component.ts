@@ -3,7 +3,7 @@ import {AppService, Foo} from './app.service'
 
 @Component({
   selector: 'foo-details',
-  providers: [AppService],  
+  providers: [AppService],
   template: `<div class="container">
     <h1 class="col-sm-12">Foo Details</h1>
     <div class="col-sm-12">
@@ -15,12 +15,15 @@ import {AppService, Foo} from './app.service'
     <div class="col-sm-12">
         <button class="btn btn-primary" (click)="getFoo()" type="submit">New Foo</button>        
     </div>
+    <div class="col-sm-12">
+      <button class="btn btn-primary" (click)="getFii()" type="submit">click</button>
+    </div>
 </div>`
 })
 
 export class FooComponent {
     public foo = new Foo(1,'sample foo');
-    private foosUrl = 'http://localhost:8082/spring-security-oauth-resource/foos/';  
+    private foosUrl = 'http://localhost:8082/spring-security-oauth-resource/foos/';
 
     constructor(private _service:AppService) {}
 
@@ -30,4 +33,10 @@ export class FooComponent {
                      data => this.foo = data,
                      error =>  this.foo.name = 'Error');
     }
+
+  getFii() {
+    this._service.check()
+      .subscribe(
+        data => console.log(data), () => console.log('error'))
+  }
 }

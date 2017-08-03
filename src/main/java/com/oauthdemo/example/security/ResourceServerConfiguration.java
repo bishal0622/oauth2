@@ -34,6 +34,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .antMatchers("/check/").access("hasRole('admin')")
                 .antMatchers(HttpMethod.GET,"/user/").access("hasRole('admin')")
                 .antMatchers(HttpMethod.POST, "/user/").permitAll()
+                .antMatchers(HttpMethod.GET,"/status/").access("hasRole('user') or hasRole('admin')")
                 .antMatchers(HttpMethod.DELETE,"/user/").access("hasRole('admin')")
                 .antMatchers(HttpMethod.PUT,"/user/**").access("hasRole('admin')")
                 .antMatchers(HttpMethod.OPTIONS,"/user/**").access("hasRole('admin')")
