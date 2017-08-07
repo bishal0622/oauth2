@@ -16,6 +16,8 @@ import {DisplayUserComponent} from "./user-signup/display-user.component";
 import {EditUserComponent} from "./user-signup/edit-user.component";
 import {AppService} from "./app.service";
 import {NavbarComponent} from "./navbar/navbar.component";
+import {isAdmin} from "./guard/isAdmin.guard";
+import {isUser} from "./guard/isUser.guard";
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
     MdButtonModule,
     appRoutingModule
   ],
-  providers: [UserService, AppService],
+  providers: [UserService, AppService, isUser, isAdmin],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AppService, Foo} from './app.service'
+import {Cookie} from "ng2-cookies";
 
 @Component({
   selector: 'foo-details',
@@ -25,7 +26,15 @@ export class FooComponent {
     public foo = new Foo(1,'sample foo');
     private foosUrl = 'http://localhost:8082/spring-security-oauth-resource/foos/';
 
-    constructor(private _service:AppService) {}
+    constructor(private _service:AppService) {
+      this._service.saveCredential().subscribe((res) => this.onSuccess(res));
+
+    }
+
+  onSuccess(res) {
+    Cookie.set("username", res.username);
+    Cookie.set("authority", res.authorities.pop().authority);
+  }
 
     getFoo(){
         this._service.getResource(this.foosUrl+this.foo.id)
@@ -35,8 +44,6 @@ export class FooComponent {
     }
 
   getFii() {
-    this._service.check()
-      .subscribe(
-        data => console.log(data), () => console.log('error'))
+   console.log("fiii");
   }
 }

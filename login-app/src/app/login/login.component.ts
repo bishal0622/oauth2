@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AppService} from '../app.service'
+import {Cookie} from "ng2-cookies";
 
 @Component({
   selector: 'login-form',
@@ -8,13 +9,15 @@ import {AppService} from '../app.service'
 
 })
 export class LoginComponent {
-    public loginData = {username: "", password: ""};
+  public loginData = {username: "", password: ""};
 
-    constructor(private _service:AppService) {}
+  constructor(private _service: AppService) {
+  }
 
-    login() {
-        this._service.obtainAccessToken(this.loginData);
-    }
 
+
+  login() {
+    this._service.obtainAccessToken(this.loginData);
+  }
 
 }

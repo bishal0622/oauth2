@@ -59,11 +59,12 @@ export class AppService {
   }
 
   logout() {
-    Cookie.delete('access_token');
+    Cookie.deleteAll();
     this._router.navigate(['/login']);
   }
 
-  check() {
-    return this._http.get("http://localhost:9000/status/").map((res) => res.json());
+
+  saveCredential() {
+    return this._http.get("http://localhost:9000/status" + "/?access_token=" + Cookie.get('access_token')).map((res) => res.json());
   }
 }

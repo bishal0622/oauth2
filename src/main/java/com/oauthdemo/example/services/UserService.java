@@ -106,7 +106,7 @@ public class UserService {
             userRepository.save(user);
         }else {
             user.setEnabled(false);
-            mailSender.sendMail(user.getEmail(), "Activation Success", "Your Account has been activated please try to login in again.");
+            mailSender.sendMail(user.getEmail(), "DeActivation Success", "Your Account has been activated please try to login in again.");
             logger.info("Deactivated User :" + user.toString());
             userRepository.save(user);
         }
